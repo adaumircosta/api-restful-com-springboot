@@ -5,13 +5,11 @@
  */
 package com.carros.api;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
+import com.carros.api.domain.Carro;
+import com.carros.api.domain.CarroService;
+import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -19,12 +17,14 @@ import org.springframework.web.bind.annotation.RestController;
  * @author adaumir
  */
 @RestController
-@RequestMapping("/")
-public class IndexController {
+@RequestMapping("/api/v1/carros")
+public class CarroController {
+    
+    private CarroService service = new CarroService();
     
     @GetMapping
-    public String get(){
-        return "Api dos Carros";
+    public List<Carro> get(){
+        return service.getCarros();
     }
     
     
