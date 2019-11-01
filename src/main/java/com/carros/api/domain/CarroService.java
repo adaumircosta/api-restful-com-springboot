@@ -7,6 +7,7 @@ package com.carros.api.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,7 +17,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class CarroService {
     
-    public List<Carro> getCarros(){
+    @Autowired
+    private CarroRepository repository;
+    
+    public Iterable<Carro> getCarros(){
+        return repository.findAll();
+    }
+    
+    public List<Carro> getCarrosFake(){
         List<Carro> carros = new ArrayList<>();
         
         carros.add(new Carro(1L, "Fusca"));
